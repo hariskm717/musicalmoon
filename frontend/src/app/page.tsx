@@ -1,5 +1,4 @@
-'use client'
-
+ 
 import { useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -9,11 +8,11 @@ import { toast } from 'sonner'
 import { useAuth } from '@/hooks/useAuth'
 import { loginSchema, type LoginInput } from '@/lib/validations/auth'
 import { FullPageSpinner } from '@/components/shared/LoadingSpinner'
-
+ 
 export default function SignInPage() {
   const router = useRouter()
   const { user, loading, signInWithEmail, signInWithGoogle } = useAuth()
-
+ 
   const {
     register,
     handleSubmit,
@@ -21,22 +20,22 @@ export default function SignInPage() {
   } = useForm<LoginInput>({
     resolver: zodResolver(loginSchema),
   })
-
+ 
   useEffect(() => {
     if (!loading && user) {
       router.replace('/dashboard')
     }
   }, [loading, user, router])
-
+ 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     if (params.get('verification') === 'sent') {
       toast.success('Verification email sent. Verify your email, then sign in.')
     }
   }, [])
-
+ 
   if (loading) return <FullPageSpinner />
-
+ 
   const onSubmit = async (data: LoginInput) => {
     try {
       await signInWithEmail(data.email, data.password)
@@ -51,7 +50,7 @@ export default function SignInPage() {
       }
     }
   }
-
+ 
   const handleGoogleSignIn = async () => {
     try {
       await signInWithGoogle()
@@ -60,24 +59,24 @@ export default function SignInPage() {
       toast.error('Google sign-in failed. Please try again.')
     }
   }
-
+ 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-zinc-100 p-8 dark:bg-zinc-950">
-      <div className="w-full max-w-md rounded-xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+    <main className="flex min-h-screen items-center justify-center bg-zinc-950 p-8">
+      <div className="w-full max-w-md rounded-xl border border-zinc-800 bg-zinc-900 p-8 shadow-sm">
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
+          <h1 className="text-3xl font-bold tracking-tight text-white">
             Welcome Back
           </h1>
-          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+          <p className="mt-2 text-sm text-zinc-400">
             Sign in to access your team dashboard
           </p>
         </div>
-
+ 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           <div>
             <label
               htmlFor="email"
-              className="mb-1.5 block text-sm font-semibold text-zinc-900 dark:text-white"
+              className="mb-1.5 block text-sm font-semibold text-white"
             >
               Email Address
             </label>
@@ -88,7 +87,7 @@ export default function SignInPage() {
               placeholder="you@email.com"
               aria-invalid={!!errors.email}
               aria-describedby={errors.email ? 'email-error' : undefined}
-              className="w-full rounded-md border border-zinc-200 bg-zinc-50 px-4 py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-400 aria-invalid:border-red-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
+              className="w-full rounded-md border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 aria-invalid:border-red-500"
               {...register('email')}
             />
             {errors.email && (
@@ -97,11 +96,11 @@ export default function SignInPage() {
               </p>
             )}
           </div>
-
+ 
           <div>
             <label
               htmlFor="password"
-              className="mb-1.5 block text-sm font-semibold text-zinc-900 dark:text-white"
+              className="mb-1.5 block text-sm font-semibold text-white"
             >
               Password
             </label>
@@ -112,7 +111,7 @@ export default function SignInPage() {
               placeholder="••••••••"
               aria-invalid={!!errors.password}
               aria-describedby={errors.password ? 'password-error' : undefined}
-              className="w-full rounded-md border border-zinc-200 bg-zinc-50 px-4 py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-400 aria-invalid:border-red-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
+              className="w-full rounded-md border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 aria-invalid:border-red-500"
               {...register('password')}
             />
             {errors.password && (
@@ -121,30 +120,30 @@ export default function SignInPage() {
               </p>
             )}
           </div>
-
+ 
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full rounded-md bg-zinc-900 px-6 py-3 text-sm font-semibold text-white shadow transition-colors hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-50"
+            className="w-full rounded-md bg-white px-6 py-3 text-sm font-semibold text-zinc-900 shadow transition-colors hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isSubmitting ? 'Signing in…' : 'Sign In'}
           </button>
-
+ 
           <button
             type="button"
             onClick={handleGoogleSignIn}
-            className="flex w-full items-center justify-center gap-2 rounded-md border border-zinc-200 bg-white px-6 py-3 text-sm font-medium text-zinc-700 shadow-sm transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800"
+            className="flex w-full items-center justify-center gap-2 rounded-md border border-zinc-700 bg-zinc-900 px-6 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-zinc-800"
           >
             <GoogleIcon className="h-4 w-4" />
             Continue with Google
           </button>
         </form>
-
-        <p className="mt-6 text-center text-sm text-zinc-500 dark:text-zinc-400">
+ 
+        <p className="mt-6 text-center text-sm text-zinc-400">
           Don&apos;t have an account?{' '}
           <Link
             href="/auth/signup"
-            className="font-medium text-zinc-900 underline dark:text-white"
+            className="font-medium text-white underline"
           >
             Create one
           </Link>
@@ -153,7 +152,7 @@ export default function SignInPage() {
     </main>
   )
 }
-
+ 
 function GoogleIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
@@ -176,3 +175,4 @@ function GoogleIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
+ 
