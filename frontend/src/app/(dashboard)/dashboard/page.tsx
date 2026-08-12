@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 
 const teamMembers = [
   {
-    name: 'Richard Farmosa',
+    name: 'Richard Formosa',
     role: 'UX Designer',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
