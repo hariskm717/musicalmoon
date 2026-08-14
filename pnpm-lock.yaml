@@ -15,7 +15,7 @@ importers:
   .:
     devDependencies:
       lefthook:
-        specifier: ^1.13.6
+        specifier: ^1.11.13
         version: 1.13.6
       next:
         specifier: 16.2.12
