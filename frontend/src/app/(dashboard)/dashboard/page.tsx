@@ -1,43 +1,33 @@
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Team',
-}
-
 const teamMembers = [
   {
     name: 'Richard Formosa',
     role: 'UX Designer',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    description: 'Richard is a creative UX Designer passionate about intuitive digital experiences, creating clean, engaging and user friendly interfaces.',
     image: '/richard.jpg',
   },
   {
     name: 'Ahmed Salih',
     role: 'Project Manager',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    description: 'Ahmed is a dedicated Project Manager focused on successful project delivery, leading teams through planning, collaboration, communication and execution.',
     image: '/ahmed.jpg',
   },
   {
     name: 'Guarav Shiven',
     role: 'Business Analyst',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    description: 'Gurav is a strategic Business Analyst focused on understanding business needs, identifying opportunities, improving processes and supporting informed decisions.',
     image: '/guarav.jpg',
   },
   {
     name: 'Haris Mughal',
     role: 'Developer',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    description: 'Haris is a dedicated Developer passionate about building reliable software solutions, focusing on clean code, collaboration and practical innovation.',
     image: '/haris.jpg',
   },
   {
     name: 'Stephen Oberoi',
     role: 'Developer',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Stephen is a skilled Developer passionate about building efficient software solutions, focusing on clean code, collaboration and dependable digital products.',
     image: '/stephen.jpg',
   },
 ]
